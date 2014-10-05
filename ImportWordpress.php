@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 if(!defined("STDIN")) {
-    define('DEBUG', false);
+    define('DEBUG', true);
 }
 
 class ImportWordpress
@@ -69,9 +69,12 @@ class ImportWordpress
                 );
 
             if ( defined('DEBUG') && DEBUG ) {
-                // if ( $item->category->attributes()->nicename == 'tecnologia') {
-                    _pr( htmlentities( $this->normalizeHTML($post_content) ));
-                // }
+                if ( $item->category->attributes()->nicename == 'wordpress') {
+                    _pr( ( $this->importImages($post_content) ));
+                    // _pr( htmlentities( $this->normalizeHTML($post_content) ));
+                }
+
+                $this->importImages($post_content);
 
             } else {
                 $post_content = $this->normalizeHTML($post_content);
@@ -79,6 +82,7 @@ class ImportWordpress
 
             $this->writeFile($post_name, $post_content);
         }
+
     }
 
     /**
@@ -158,23 +162,6 @@ class ImportWordpress
         fclose($handle);
 
         return $this;
-
-            // $file = new SplFileObject($filename, "w");
-
-            // if ( $file->isWritable() ) {
-
-            //     $file->fwrite($content);
-            //     // chmod($filename, 0660);
-            //     $this->setVerbose('success', 'Imported: ' . $filename);
-            // } else {
-
-            //     $this->setVerbose('error', 'Permission denied: ' . $filename);
-            // }
-
-            // $file = null;
-        // }
-
-        // return $this->_result;
     }
 
     public function setPostName($date_string, $string_name, $format_slug = false)
@@ -203,6 +190,7 @@ class ImportWordpress
             '/<strong>/is'                 => "**", // Strong replacement
             '/\s+<\/strong>|<\/strong>/is' => "**", // Close strong
             '/\[caption.*?\]?<a rel.*?>|<\/a>\[\/caption\]/is' => '',
+            '/http:\/\/blog\.adrianorosa\.com\/wp-content\/uploads/i' => '/images',
         );
 
         $string = preg_replace(array_keys($normalize_text), array_values($normalize_text), $string);
@@ -210,10 +198,39 @@ class ImportWordpress
         return $string;
     }
 
+    public function importImages($string)
+    {
+        // $string = $this->_data
+        // $string = ((string)$this->_data->children('content', true)->encoded);
+       preg_match_all('/\<+img\s+.*?>/ i', $string, $matches);
+
+       // preg_match_all('/src="http:\/\/.*?.jpg/i', $string, $matches);
+
+       $images = array();
+
+       foreach ($matches[0] as $key => $value) {
+           $images[] = preg_replace('/http:\/\/blog\.adrianorosa\.com\/wp-content\/uploads/i', "/images", $value);
+       }
+
+       // _vd($string);
+
+        // $string = $matches;// _pr($matches);
+
+       // return $matches;
+       // return $string;
+       return $images;
+    }
+
     public function run(array $argv)
     {
         $count = 0;
         $read_item = 'all';
+
+        if ( isset($argv['type'])) {
+            if ( $argv['type'] == 'images' ) {
+                $read_item = (string)$argv['type'];
+            }
+        }
 
         if ( $this->is_cli() ) {
 
@@ -234,6 +251,9 @@ class ImportWordpress
         }
 
         switch ($read_item) {
+            case 'images':
+                $this->importImages();
+                break;
             case 'post':
                 $this->importPost();
                 break;
@@ -303,7 +323,7 @@ class ImportWordpress
         return $this;
     }
 }
-    if ( !isset($argv) ) $argv = array();
+    if ( !isset($argv) ) $argv = $_GET; array();
     $import = new ImportWordpress();
     $import->run($argv);
 
