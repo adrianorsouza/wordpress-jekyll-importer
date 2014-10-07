@@ -1,0 +1,25 @@
+{
+  "name": "adrianorsouza/wordpress-to-jekyll",
+  "description": "A simple Wordpress posts and pages migration to jekyll blogging written in PHP",
+  "keywords": ["wordpress-to-jekyll","jekyll importer", "migrate wordpress jekyll"],
+  "homepage": "https://github.com/adrianorsouza/wordpress-to-jekyll",
+
+  "license": "MIT",
+
+  "authors": [
+  {
+    "name": "Adriano Rosa",
+    "email": "dev@adrianorosa.com"
+  }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "minimum-stability": "stable",
+
+  "autoload": {
+    "psr-4": {
+      "JekyllImporter\\": "src/JekyllImporter"
+      }
+    }
+  }
