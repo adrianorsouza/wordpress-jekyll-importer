@@ -1,0 +1,8 @@
+- name: Category One
+  slug: category-one
+
+- name: Category Three
+  slug: category-three
+
+- name: Category Two
+  slug: category-two
