@@ -8,6 +8,7 @@ use JekyllImporter\FileHandlerException;
  * Class FileHandler
  *
  * @author Adriano Rosa (http://adrianorosa.com)
+ * @link https://github.com/adrianorsouza/wordpress-jekyll-importer
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class FileHandler
