@@ -5,6 +5,13 @@ namespace JekyllImporter;
 use JekyllImporter\FileHandler;
 use JekyllImporter\FileHandlerException;
 
+/**
+ * Class WordpressImporter
+ *
+ * @author Adriano Rosa (http://adrianorosa.com)
+ * @link https://github.com/adrianorsouza/wordpress-jekyll-importer
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
 class WordpressImporter
 {
     /**
