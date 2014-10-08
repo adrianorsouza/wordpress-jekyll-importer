@@ -1,7 +1,7 @@
 Wordpress to Jekyll Importer
 ============================
 
-A simple PHP script to import posts and pages from Wordpress to Jekyll.
+A simple PHP script to import posts and pages from [Wordpress](https://wordpress.org/) to [Jekyll](http://jekyllrb.com/).
 
 ##Installation via composer
 This project can be found at [Composer/Packagist](https://packagist.org/packages/adrianorsouza/wp-jekyll-importer).
