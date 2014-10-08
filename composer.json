@@ -1,8 +1,8 @@
 {
-  "name": "adrianorsouza/wordpress-to-jekyll",
+  "name": "adrianorsouza/wp-jekyll-importer",
   "description": "A simple Wordpress posts and pages migration to jekyll blogging written in PHP",
   "keywords": ["wordpress-to-jekyll","jekyll importer", "migrate wordpress jekyll"],
-  "homepage": "https://github.com/adrianorsouza/wordpress-to-jekyll",
+  "homepage": "https://github.com/adrianorsouza/wordpress-jekyll-importer",
 
   "license": "MIT",
 
