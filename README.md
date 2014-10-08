@@ -16,9 +16,9 @@ Download the latest [release](https://github.com/adrianorsouza/wordpress-jekyll-
 
 ## Get started 
 
-**First dump a `WXR-data.xml` file from wordpress installation by following these steps:**
+**First dump a `WXR-data.xml` file from Wordpress installation by following these steps:**
 
-1. Log in to that wordpress as an administrator.
+1. Log in to that Wordpress as an administrator.
 2. Go to menu `Tools` in the WordPress admin panel then select `Export`.
 3. Choose what to export to the `WXR` file:  `All content`, `Posts` or `Pages`.
 4. Click download Export File, save it at the root of this directory.
